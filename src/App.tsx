@@ -1,7 +1,6 @@
 import { useMediaQuery } from "@chakra-ui/react";
 import {
   SimpleGrid,
-  Image,
   Box,
   Heading,
   Text,
@@ -10,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import DesktopImage from "./assets/image-product-desktop.jpg";
 import MobileImage from "./assets/image-product-mobile.jpg";
+import Img from "./components/Img";
 
 function App() {
   const [lessThan768px] = useMediaQuery(["(max-width: 768px)"]);
@@ -20,14 +20,14 @@ function App() {
       bgColor="hsl(0, 0%, 100%)"
       borderRadius={10}
       overflow="hidden"
+      width={lessThan768px ? "100%" : "60vw"}
+      maxWidth="800px"
     >
-      <Image
-        src={lessThan768px ? MobileImage : DesktopImage}
-        width={lessThan768px ? "100%" : "50%"}
-      />
+      <Img src={lessThan768px ? MobileImage : DesktopImage} />
       <Box
         fontFamily="Montserrat"
         display="flex"
+        justifyContent="center"
         flexDirection="column"
         rowGap="6"
         padding={7}
